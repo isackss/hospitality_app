@@ -7,7 +7,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { ClientType, countriesList, gender } from "@/constants";
+import { ClientType, countriesList, gender, IdType } from "@/constants";
 import { UserFormValidation } from "@/lib/validations";
 
 import CustomFormField from "../CustomFormField";
@@ -108,7 +108,7 @@ const ClientForm = () => {
             fieldType={FormFieldType.SELECT}
             control={form.control}
             name="clientType"
-            label="Tipo"
+            label="Tipo de cliente"
             placeholder="Seleccione un tipo"
           >
             {ClientType.map((client) => (
@@ -136,6 +136,52 @@ const ClientForm = () => {
             ))}
           </CustomFormField>
         </div>
+
+        <div className="flex flex-col gap-6 xl:flex-row">
+          <CustomFormField
+            fieldType={FormFieldType.SELECT}
+            control={form.control}
+            name="idType"
+            label="Documento de identificación"
+            placeholder="Seleccione un tipo"
+          >
+            {IdType.map((type) => (
+              <SelectItem key={type.id} value={type.id}>
+                <div className="flex cursor-pointer items-center gap-2 capitalize">
+                  <p>{type.id}</p> - <p>{type.name}</p>
+                </div>
+              </SelectItem>
+            ))}
+          </CustomFormField>
+
+          <CustomFormField
+            fieldType={FormFieldType.INPUT}
+            control={form.control}
+            name="identificationNumber"
+            label="Número de identificación"
+            placeholder="8-456-7756"
+            iconSrc="/assets/icons/user.svg"
+            iconAlt="user"
+          />
+        </div>
+
+        <CustomFormField
+          fieldType={FormFieldType.INPUT}
+          control={form.control}
+          name="email"
+          label="Correo electrónico"
+          placeholder="correo@dominio.com"
+          iconSrc="/assets/icons/email.svg"
+          iconAlt="user"
+        />
+
+        <CustomFormField
+          fieldType={FormFieldType.PHONE_INPUT}
+          control={form.control}
+          name="phone"
+          label="Teléfono"
+          placeholder="(507) 123-4567"
+        />
 
         <CustomFormField
           fieldType={FormFieldType.INPUT}
@@ -193,8 +239,8 @@ const ClientForm = () => {
           <CustomFormField
             fieldType={FormFieldType.SELECT}
             control={form.control}
-            name="gender"
-            label="Género"
+            name="sex"
+            label="Sexo"
             placeholder="Seleccione un género"
           >
             {gender.map((gen) => (
@@ -226,6 +272,12 @@ const ClientForm = () => {
             placeholder="(507) 123-4567"
           />
         </div>
+
+        <section className="space-y-6">
+          <div className="space-y-1">
+            <h2 className="sub-header">Información de facturación</h2>
+          </div>
+        </section>
 
         <SubmitButton isLoading={isLoading}>Registrar</SubmitButton>
       </form>

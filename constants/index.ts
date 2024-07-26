@@ -56,6 +56,12 @@ export const ClientType = [
   { id: "EMP", name: "Empresa" },
 ];
 
+export const IdType = [
+  { id: "CED", name: "cédula" },
+  { id: "PAS", name: "pasaporte" },
+  { id: "LIC", name: "licencia de conducir" },
+];
+
 export const gender = ["hombre", "mujer", "otro"];
 
 export const countriesList = [
