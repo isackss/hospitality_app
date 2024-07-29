@@ -32,8 +32,11 @@ export enum FormFieldType {
   SKELETON = "skeleton",
 }
 const ClientForm = () => {
-  const router = useRouter();
+  /* const router = useRouter(); */
   const [isLoading, setIsLoading] = useState(false);
+  const [isCompany, setIsCompany] = useState(false);
+
+  console.log(isCompany);
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof UserFormValidation>>({
@@ -81,17 +84,34 @@ const ClientForm = () => {
             <h2 className="sub-header">Información Personal</h2>
           </div>
         </section>
-
+        <CustomFormField
+          fieldType={FormFieldType.SELECT}
+          control={form.control}
+          name="clientType"
+          label="Tipo de cliente"
+          placeholder="Seleccione un tipo"
+          setIsCompany={setIsCompany}
+        >
+          {ClientType.map((client) => (
+            <SelectItem key={client.id} value={client.id}>
+              <div className="flex cursor-pointer items-center gap-2">
+                <p>{client.id}</p> - <p>{client.name}</p>
+              </div>
+            </SelectItem>
+          ))}
+        </CustomFormField>
         <div className="flex flex-col gap-6 xl:flex-row">
-          <CustomFormField
-            fieldType={FormFieldType.INPUT}
-            control={form.control}
-            name="name"
-            label="Nombre"
-            placeholder="Juan"
-            iconSrc="/assets/icons/user.svg"
-            iconAlt="user"
-          />
+          {isCompany && (
+            <CustomFormField
+              fieldType={FormFieldType.INPUT}
+              control={form.control}
+              name="name"
+              label="Nombre"
+              placeholder="Juan"
+              iconSrc="/assets/icons/user.svg"
+              iconAlt="user"
+            />
+          )}
           <CustomFormField
             fieldType={FormFieldType.INPUT}
             control={form.control}
@@ -105,20 +125,12 @@ const ClientForm = () => {
 
         <div className="flex flex-col gap-6 xl:flex-row">
           <CustomFormField
-            fieldType={FormFieldType.SELECT}
+            fieldType={FormFieldType.PHONE_INPUT}
             control={form.control}
-            name="clientType"
-            label="Tipo de cliente"
-            placeholder="Seleccione un tipo"
-          >
-            {ClientType.map((client) => (
-              <SelectItem key={client.id} value={client.id}>
-                <div className="flex cursor-pointer items-center gap-2">
-                  <p>{client.id}</p> - <p>{client.name}</p>
-                </div>
-              </SelectItem>
-            ))}
-          </CustomFormField>
+            name="phone"
+            label="Teléfono"
+            placeholder="(507) 123-4567"
+          />
 
           <CustomFormField
             fieldType={FormFieldType.SELECT}
@@ -136,6 +148,16 @@ const ClientForm = () => {
             ))}
           </CustomFormField>
         </div>
+
+        <CustomFormField
+          fieldType={FormFieldType.INPUT}
+          control={form.control}
+          name="email"
+          label="Correo electrónico"
+          placeholder="correo@dominio.com"
+          iconSrc="/assets/icons/email.svg"
+          iconAlt="user"
+        />
 
         <div className="flex flex-col gap-6 xl:flex-row">
           <CustomFormField
@@ -164,24 +186,6 @@ const ClientForm = () => {
             iconAlt="user"
           />
         </div>
-
-        <CustomFormField
-          fieldType={FormFieldType.INPUT}
-          control={form.control}
-          name="email"
-          label="Correo electrónico"
-          placeholder="correo@dominio.com"
-          iconSrc="/assets/icons/email.svg"
-          iconAlt="user"
-        />
-
-        <CustomFormField
-          fieldType={FormFieldType.PHONE_INPUT}
-          control={form.control}
-          name="phone"
-          label="Teléfono"
-          placeholder="(507) 123-4567"
-        />
 
         <CustomFormField
           fieldType={FormFieldType.INPUT}

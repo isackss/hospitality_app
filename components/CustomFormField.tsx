@@ -33,6 +33,7 @@ interface CustomProps {
   dateFormat?: string;
   showTimeSelect?: boolean;
   children?: React.ReactNode;
+  setIsCompany?: (setIsCompany: boolean) => void;
   renderSkeleton?: (field: any) => React.ReactNode;
 }
 
@@ -45,6 +46,7 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
     showTimeSelect,
     dateFormat,
     renderSkeleton,
+    setIsCompany,
   } = props;
 
   switch (fieldType) {
@@ -119,6 +121,12 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
         </div>
       );
     case FormFieldType.SELECT:
+      if (field.value === "EMP") {
+        setIsCompany(true);
+      } else if (field.value === "CLI") {
+        setIsCompany(false);
+      }
+
       return (
         <FormControl>
           <Select onValueChange={field.onChange} defaultValue={field.value}>
