@@ -36,7 +36,7 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="data-table">
+    <div className="data-table mt-10">
       <Table className="shad-table">
         <TableHeader className="bg-dark-200">
           {table.getHeaderGroups().map((headerGroup) => (

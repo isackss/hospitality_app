@@ -19,7 +19,9 @@ export const columns: ColumnDef<Appointment>[] = [
     accessorKey: "reservationId",
     header: "Booking #",
     cell: ({ row }) => (
-      <p className="text-14-medium">{row.original.reservationId}</p>
+      <p className="text-14-medium min-w-[75px]">
+        {row.original.reservationId}
+      </p>
     ),
   },
   {
@@ -51,44 +53,83 @@ export const columns: ColumnDef<Appointment>[] = [
     ),
   },
   {
+    accessorKey: "checkIn",
+    header: "Check In",
+    cell: ({ row }) => (
+      <div className="text-14-medium">
+        <p>{row.original.checkIn}</p>
+      </div>
+    ),
+  },
+  {
+    accessorKey: "checkOut",
+    header: "Check Out",
+    cell: ({ row }) => (
+      <div className="text-14-medium">
+        <p>{row.original.checkOut}</p>
+      </div>
+    ),
+  },
+  {
+    accessorKey: "orders",
+    header: "Orders",
+    cell: ({ row }) => (
+      <div className="text-14-medium">
+        <p className="text-center">{row.original.orders}</p>
+      </div>
+    ),
+  },
+  {
     accessorKey: "status",
     header: "Status",
     cell: ({ row }) => (
-      <div className="min-w-[115px]">
+      <div>
         <StatusBadge status={row.original.status} />
       </div>
     ),
   },
   {
-    accessorKey: "schedule",
-    header: "Appointment",
+    accessorKey: "ammount",
+    header: "Ammount",
     cell: ({ row }) => (
-      <p className="text-14-regular min-w-[100px]">
-        {formatDateTime(row.original.schedule).dateTime}
-      </p>
+      <p className="text-14-regular min-w-[100px]">{row.original.ammount}</p>
     ),
   },
   {
+    accessorKey: "balance",
+    header: "Balance",
+    cell: ({ row }) => (
+      <p className="text-14-regular min-w-[100px]">{row.original.balance}</p>
+    ),
+  },
+  {
+    accessorKey: "source",
+    header: "Source",
+    cell: ({ row }) => (
+      <p className="text-14-regular min-w-[100px]">{row.original.source}</p>
+    ),
+  },
+  /* {
     accessorKey: "primaryPhysician",
     header: () => "Doctor",
     cell: ({ row }) => {
-      /* const doctor = Doctors.find(
+      const doctor = Doctors.find(
         (doc) => doc.name === row.original.primaryPhysician
-      ); */
+      );
       return (
         <div className="flex items-center gap-3">
-          {/* <Image
+          <Image
             src={doctor?.image!}
             height={100}
             width={100}
             alt={doctor?.name!}
             className="size-8"
-          /> */}
-          <p className="whitespace-nowrap">Dr. {/* {doctor?.name} */}</p>
+          />
+          <p className="whitespace-nowrap">Dr. { {doctor?.name} }</p>
         </div>
       );
     },
-  },
+  }, */
   {
     id: "actions",
     header: () => <div className="pl-4">Actions</div>,

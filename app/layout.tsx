@@ -13,9 +13,9 @@ const fontSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "CarePulse",
+  title: "Hospitality",
   description:
-    "A healthcare patient management System designed to streamline patient registration, appointment scheduling, and medical records management for healthcare providers.",
+    "Hospitality es la plataforma para gestionar tus propiedades de alquiler de forma eficiente y sencilla.",
   icons: {
     icon: "/assets/icons/logo-icon.svg",
   },

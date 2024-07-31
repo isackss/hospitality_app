@@ -74,7 +74,7 @@ export const ReservationsList = [
     ammount: "382.50",
     balance: "382.50",
     source: "Booking",
-    status: "checked in",
+    status: "checkedIn",
   },
   {
     reservationId: 456987,
@@ -87,7 +87,7 @@ export const ReservationsList = [
     ammount: "450.32",
     balance: "450.32",
     source: "Expedia",
-    status: "checked out",
+    status: "checkedOut",
   },
   {
     reservationId: 654321,
@@ -100,7 +100,7 @@ export const ReservationsList = [
     ammount: "634.25",
     balance: "634.25",
     source: "Front Desk",
-    status: "checked in",
+    status: "pending",
   },
   {
     reservationId: 123456,
@@ -378,7 +378,9 @@ export const countriesList = [
 ];
 
 export const StatusIcon = {
-  scheduled: "/assets/icons/check.svg",
+  checkedIn: "/assets/icons/in.svg",
+  checkedOut: "/assets/icons/out.svg",
   pending: "/assets/icons/pending.svg",
+  confirmed: "/assets/icons/confirm.svg",
   cancelled: "/assets/icons/cancelled.svg",
 };

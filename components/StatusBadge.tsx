@@ -9,22 +9,26 @@ const StatusBadge = ({ status }: { status: Status }) => {
   return (
     <div
       className={clsx("status-badge", {
-        "bg-green-600": status === "scheduled",
-        "bg-blue-600": status === "pending",
-        "bg-red-600": status === "cancelled",
+        "bg-green-900": status === "checkedIn",
+        "bg-orange-900": status === "checkedOut",
+        "bg-yellow-900": status === "pending",
+        "bg-blue-900": status === "confirmed",
+        "bg-red-900": status === "cancelled",
       })}
     >
       <Image
         src={StatusIcon[status]}
-        height={24}
-        width={24}
+        height={34}
+        width={34}
         alt={status}
         className="h-fit w-3"
       />
       <p
         className={clsx("text-12-semibold capitalize", {
-          "text-green-500": status === "scheduled",
-          "text-blue-500": status === "pending",
+          "text-green-500": status === "checkedIn",
+          "text-orange-500": status === "checkedOut",
+          "text-yellow-500": status === "pending",
+          "text-blue-500": status === "confirmed",
           "text-red-500": status === "cancelled",
         })}
       >

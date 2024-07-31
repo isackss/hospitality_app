@@ -45,7 +45,7 @@ const Reservations = () => {
   }
 
   return (
-    <div className="mx-auto mt-5 w-screen">
+    <div className="mx-auto flex max-w-7xl flex-col space-y-14">
       <header className="flex justify-between">
         <div className="flex items-end gap-2">
           <h1 className="text-3xl">Reservations</h1>
@@ -117,96 +117,6 @@ const Reservations = () => {
             alt="icon"
           />
         </Button>
-      </section>
-      <section className="mt-10">
-        <table className="w-full min-w-full max-w-screen-xl overflow-x-auto">
-          <thead>
-            <tr className="border border-slate-700 bg-slate-800">
-              <th>Booking #</th>
-              <th>Room</th>
-              <th>Name</th>
-              <th>Guests</th>
-              <th>Check in</th>
-              <th>Check out</th>
-              <th>Orders</th>
-              <th>Ammount</th>
-              <th>Balance</th>
-              <th>Source</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {ReservationsList.map((reservation) => (
-              <tr
-                className="border border-slate-800 bg-slate-800 text-center"
-                key={reservation.reservationId}
-              >
-                <td>
-                  <p className="p-2">{reservation.reservationId}</p>
-                </td>
-                <td>
-                  <p>{reservation.room}</p>
-                </td>
-                <td>
-                  <p>{reservation.client}</p>
-                </td>
-                <td>
-                  <div className="flex justify-center gap-1">
-                    <p className="flex gap-1">
-                      <Image
-                        src="/assets/icons/man.svg"
-                        height={24}
-                        width={24}
-                        alt="man"
-                      />{" "}
-                      {reservation.guests.adults}
-                    </p>
-                    <p className="flex gap-1">
-                      <Image
-                        src="/assets/icons/boy.svg"
-                        height={24}
-                        width={24}
-                        alt="boy"
-                      />{" "}
-                      {reservation.guests.children}
-                    </p>
-                  </div>
-                </td>
-
-                <td>
-                  <p>{reservation.checkIn}</p>
-                </td>
-                <td>
-                  <p>{reservation.checkOut}</p>
-                </td>
-                <td>
-                  <p>{reservation.orders}</p>
-                </td>
-                <td>
-                  <p>{reservation.ammount}</p>
-                </td>
-                <td>
-                  <p>{reservation.balance}</p>
-                </td>
-                <td>
-                  <p>{reservation.source}</p>
-                </td>
-                <td className="flex justify-center">
-                  <p
-                    className={clsx("status-badge capitalize", {
-                      "bg-green-700": reservation.status === "checked in",
-                      "bg-blue-700": reservation.status === "confirmed",
-                      "bg-orange-700": reservation.status === "checked out",
-                      "bg-red-700": reservation.status === "cancelled",
-                    })}
-                  >
-                    {reservation.status}
-                  </p>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
       </section>
       <DataTable columns={columns} data={ReservationsList} />
     </div>
