@@ -10,7 +10,6 @@ import {
 import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
-
 import {
   Table,
   TableBody,

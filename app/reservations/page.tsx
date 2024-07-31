@@ -9,6 +9,8 @@ import { z } from "zod";
 
 import CustomFormField from "@/components/CustomFormField";
 import { FormFieldType } from "@/components/forms/ClientForm";
+import { columns } from "@/components/table/columns";
+import { DataTable } from "@/components/table/DataTable";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { ReservationsList } from "@/constants";
@@ -150,8 +152,24 @@ const Reservations = () => {
                 </td>
                 <td>
                   <div className="flex justify-center gap-1">
-                    <p>Adults: {reservation.guests.adults}</p>
-                    <p>Children: {reservation.guests.children}</p>
+                    <p className="flex gap-1">
+                      <Image
+                        src="/assets/icons/man.svg"
+                        height={24}
+                        width={24}
+                        alt="man"
+                      />{" "}
+                      {reservation.guests.adults}
+                    </p>
+                    <p className="flex gap-1">
+                      <Image
+                        src="/assets/icons/boy.svg"
+                        height={24}
+                        width={24}
+                        alt="boy"
+                      />{" "}
+                      {reservation.guests.children}
+                    </p>
                   </div>
                 </td>
 
@@ -190,6 +208,7 @@ const Reservations = () => {
           </tbody>
         </table>
       </section>
+      <DataTable columns={columns} data={ReservationsList} />
     </div>
   );
 };
